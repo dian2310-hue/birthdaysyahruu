@@ -1,0 +1,31 @@
+<!-- MENU 1: SURAT SINGKAT-->
+<div class="view" data-view="letter">
+  <button class="back" type="button" data-go="dashboard"><svg aria-hidden="true"><use href="#i-left"/></svg> Dashboard</button>
+  <header class="page-head">
+    <h2 class="title-serif">SURAT SINGKAT</h2>
+    <p class="muted">Satu ucapan kecil, khusus buat abangcaluu.</p>
+  </header>
+
+  <div class="letter-stage">
+    <div class="envelope" id="envelope" aria-hidden="false">
+      <div class="env-back"></div>
+      <div class="peek"></div>
+      <div class="pocket"></div>
+      <div class="flap"></div>
+      <svg class="seal" aria-hidden="true"><use href="#i-heart"/></svg>
+    </div>
+    <button class="btn btn-primary" id="btn-open-letter" type="button">Buka</button>
+
+    <article class="paper" id="letter-paper" hidden>
+      <svg class="paper-heart" aria-hidden="true"><use href="#i-heart"/></svg>
+      {% for para in c.letter %}
+      <p style="--i: {{ loop.index0 }}">{{ para }}</p>
+      {% endfor %}
+    </article>
+
+    <div class="row" id="letter-actions" hidden>
+      <button class="btn btn-ghost" id="btn-read-again" type="button">Baca Lagi</button>
+      <button class="btn btn-primary" type="button" data-go="dashboard">Kembali</button>
+    </div>
+  </div>
+</div>

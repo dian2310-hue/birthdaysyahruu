@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ site.site_title }}</title>
+  <meta name="theme-color" content="#FFF9F0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A9C9E8' d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.4 4.5c2.1 0 3.8 1.2 5.6 3.3 1.8-2.1 3.5-3.3 5.6-3.3 3.7 0 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+</head>
+<body data-music-title="{{ site.music_title }}"
+      data-placeholder="{{ url_for('static', filename='images/photos/placeholder.svg') }}">
+
+  <!-- Kumpulan ikon kecil (dipakai ulang lewat <use href="#nama">) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#DCEEFA"/><stop offset="1" stop-color="#A9C9E8"/>
+      </linearGradient>
+    </defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.4 4.5c2.1 0 3.8 1.2 5.6 3.3 1.8-2.1 3.5-3.3 5.6-3.3 3.7 0 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z"/></symbol>
+    <symbol id="i-heart-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.4 4.5c2.1 0 3.8 1.2 5.6 3.3 1.8-2.1 3.5-3.3 5.6-3.3 3.7 0 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3L12 19.5l-2.3-6.2L3.5 11l6.2-2.3z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" d="M7 18a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6-1A4.5 4.5 0 0 1 17 18z"/></symbol>
+    <symbol id="i-bow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" d="M12 12L5 7.5c-1.6 3-1.6 6 0 9zM12 12l7-4.5c1.6 3 1.6 6 0 9zM10.8 12a1.2 1.2 0 1 0 2.4 0 1.2 1.2 0 0 0-2.4 0z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.8 7.5l8.2 6 8.2-6"/></g></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.4"/><path d="M8 7l1.5-2.5h5L16 7"/></g></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="16" r="2"/></g></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.8l-10-6.5A1 1 0 0 0 8 5.5z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><g fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1.4"/><rect x="13.5" y="5" width="4" height="14" rx="1.4"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+  </svg>
+
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+  <div class="veil" id="veil" aria-hidden="true"></div>
+
+  <!-- Satu lagu untuk seluruh website. Elemen ini TIDAK pernah dimuat ulang,
+       jadi lagunya tidak mengulang dari awal saat pindah menu. -->
+  <audio id="bgm" preload="auto"{% if music_url %} src="{{ url_for('static', filename=music_url) }}"{% endif %}{% if music_loop %} loop{% endif %}></audio>
+
+  <main id="stage">
+
+    <!-- 0. HATI: ketuk untuk membuka (ketukan ini juga memulai musik) -->
+    <section class="screen is-active" id="screen-heart" aria-label="Ketuk hati untuk membuka">
+      <p class="eyebrow">for my favorite boy</p>
+      <button class="heart-btn" id="heart-btn" type="button" aria-label="Tap the heart to open">
+        <span class="heart" id="heart">
+          <span class="half left">
+            <svg viewBox="-4 -4 208 188" aria-hidden="true">
+              <path d="M100 170C20 110 0 70 0 45C0 18 20 0 50 0C75 0 92 14 100 30C108 14 125 0 150 0C180 0 200 18 200 45C200 70 180 110 100 170Z" fill="url(#hg)" stroke="#30343B" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M30 30C24 38 24 48 30 56" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".85"/>
+            </svg>
+          </span>
+          <span class="half right">
+            <svg viewBox="-4 -4 208 188" aria-hidden="true">
+              <path d="M100 170C20 110 0 70 0 45C0 18 20 0 50 0C75 0 92 14 100 30C108 14 125 0 150 0C180 0 200 18 200 45C200 70 180 110 100 170Z" fill="url(#hg)" stroke="#30343B" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M30 30C24 38 24 48 30 56" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".85"/>
+            </svg>
+          </span>
+        </span>
+      </button>
+      <p class="hint">tap the heart</p>
+      <p class="tiny">.</p>
+    </section>
+
+    <!-- 1. UNDANGAN DIGITAL -->
+    <section class="screen" id="screen-invite">
+      <div class="invite-card">
+        <p class="eyebrow">Ucapan buat abang</p>
+        <h1 class="title-serif invite-title">Happy Birthday,<br><em>My Favorite Boy</em></h1>
+
+        <div class="photo-stage">
+          <svg class="doodle d-cloud" aria-hidden="true"><use href="#i-cloud"/></svg>
+          <svg class="doodle d-star" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="doodle d-heart" aria-hidden="true"><use href="#i-heart"/></svg>
+          <figure class="polaroid tilt-l">
+            <span class="tape"></span>
+            <img src="{{ url_for('static', filename='images/photos/' ~ site.hero_photo) }}" alt="Foto kami (placeholder, ganti dengan foto asli)" width="400" height="500">
+          </figure>
+          <div class="sticker sticker-chibi">{% include 'partials/_chibi.html' %}</div>
+        </div>
+
+        <p class="made">Dibuat dengan cinta, just for bangcaluuu</p>
+        <button class="btn btn-primary" id="btn-open-gift" type="button">Buka</button>
+      </div>
+    </section>
+
+    <!-- 2. PASSWORD -->
+    <section class="screen" id="screen-password">
+      <div class="card pw-card">
+        <span class="lock-bubble"><svg aria-hidden="true"><use href="#i-lock"/></svg></span>
+        <h2 class="title-serif">Kode Rahasia, yasayanggg</h2>
+        <p class="muted">Masukkan enam angka, coba tebak.</p>
+        <div class="pin" id="pin" role="group" aria-label="Password enam digit">
+          {% for i in range(6) %}
+          <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="Digit {{ i + 1 }}">
+          {% endfor %}
+        </div>
+        <p class="pin-error" id="pin-error" role="alert" aria-live="assertive"></p>
+        <button class="btn btn-primary" id="btn-unlock" type="button" disabled>Buka Kunci</button>
+        <button class="btn btn-ghost" id="btn-pw-back" type="button">Kembali</button>
+      </div>
+    </section>
+
+    <!-- 3. ISI WEBSITE (dimuat dari server setelah password benar) -->
+    <section class="screen" id="screen-app">
+      <div class="app" id="app-root"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Dibuat dengan cinta, by adek ayipaaa.</footer>
+
+  <!-- Elemen melayang (di luar halaman supaya posisinya selalu pas) -->
+  <div class="music-pill" id="music-pill" hidden>
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="music-label" id="music-label">Putar lagu tentang kita</span>
+    <button class="music-btn" id="music-btn" type="button" aria-label="Play music"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto besar">
+    <button class="lb-close" id="lb-close" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    <button class="lb-nav lb-prev" id="lb-prev" type="button" aria-label="Foto sebelumnya"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+    <figure class="lb-frame">
+      <img id="lb-img" alt="">
+      <figcaption id="lb-caption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lb-next" type="button" aria-label="Foto berikutnya"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+  </div>
+
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <h3 class="title-serif" id="modal-title"></h3>
+      <p id="modal-text"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modal-no" type="button"></button>
+        <button class="btn btn-primary" id="modal-yes" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/music.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/auth.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/letter.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/gallery.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/quiz.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/playlist.js') }}" defer></script>
+</body>
+</html>

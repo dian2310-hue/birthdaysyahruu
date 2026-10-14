@@ -1,0 +1,21 @@
+<!-- MENU 2: OUR MEMORIES -->
+<div class="view" data-view="memories">
+  <button class="back" type="button" data-go="dashboard"><svg aria-hidden="true"><use href="#i-left"/></svg> Dashboard</button>
+  <header class="page-head">
+    <h2 class="title-serif">FOTO-FOTO LUCU</h2>
+    <p class="muted">Lucuuunaaa kita. Btw  fotonya bisa diklik satu"</p>
+  </header>
+
+  <div class="memory-grid">
+    {% for p in c.photos %}
+    <button class="memory" type="button" data-caption="{{ p.caption }}" aria-label="Buka foto: {{ p.caption }}">
+      <span class="tape"></span>
+      <img src="{{ url_for('static', filename='images/photos/' ~ p.file) }}" alt="{{ p.caption }}" loading="lazy" width="400" height="400">
+      <span class="memory-caption">{{ p.caption }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  <p class="broken-note" id="broken-note" hidden>Beberapa foto gagal dimuat. Cek nama file di <code>data/content.json</code> dan folder <code>static/images/photos/</code>.</p>
+
+  <div class="row"><button class="btn btn-primary" type="button" data-go="dashboard">Kembali</button></div>
+</div>

@@ -1,0 +1,61 @@
+{# Dashboard + 4 menu. Diberikan server HANYA setelah password benar. #}
+
+<!-- DASHBOARD -->
+<div class="view is-active" data-view="dashboard">
+  <header class="dash-hero">
+    <div class="dash-text">
+      <p class="eyebrow">for {{ c.nickname }}</p>
+      <h1 class="title-serif dash-title">Happy {{ age_label }} Birthday, <em>Sayangku!</em></h1>
+      <p class="lead">Today is your day, and adek ada sesuatu buat abang.</p>
+      <div class="chips">
+        <span class="chip">For: {{ c.nickname }}</span>
+        <span class="chip">{{ c.birthday_display }}</span>
+      </div>
+      <button class="btn btn-soft" type="button" data-music-toggle>
+        <svg aria-hidden="true"><use href="#i-note"/></svg>
+        <span class="mt-label">Coba putar lagu kita</span>
+      </button>
+    </div>
+    <div class="dash-art">
+      <svg class="doodle d-cloud" aria-hidden="true"><use href="#i-cloud"/></svg>
+      <svg class="doodle d-star" aria-hidden="true"><use href="#i-star"/></svg>
+      <figure class="polaroid tilt-r">
+        <span class="tape"></span>
+        <img src="{{ url_for('static', filename='images/photos/' ~ c.hero_photo) }}" alt="Foto kami (placeholder)" width="400" height="500">
+      </figure>
+      <div class="sticker sticker-chibi">{% include 'partials/_chibi.html' %}</div>
+    </div>
+  </header>
+
+  <nav class="menu-grid" aria-label="Menu">
+    <button class="menu-card" type="button" data-go="letter">
+      <span class="menu-icon"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+      <span class="menu-title">SURAT SINGKAT</span>
+      <span class="menu-desc">Satu ucapan kecil, khusus buat abangcaluu.</span>
+    </button>
+    <button class="menu-card" type="button" data-go="memories">
+      <span class="menu-icon"><svg aria-hidden="true"><use href="#i-camera"/></svg></span>
+      <span class="menu-title">FOTO-FOTO LUCU</span>
+      <span class="menu-desc">Foto-foto kita yang lucu dan gemmashhh.</span>
+    </button>
+    <button class="menu-card" type="button" data-go="quiz">
+      <span class="menu-icon"><svg aria-hidden="true"><use href="#i-heart-o"/></svg></span>
+      <span class="menu-title">KUIS CINTA</span>
+      <span class="menu-desc">Kuis singkat, abang jawab jujur yaasayanggg.</span>
+    </button>
+    <button class="menu-card" type="button" data-go="playlist">
+      <span class="menu-icon"><svg aria-hidden="true"><use href="#i-note"/></svg></span>
+      <span class="menu-title">LAGU FAVORITE KITA</span>
+      <span class="menu-desc">Lagu kesukaan kita berdua</span>
+    </button>
+  </nav>
+</div>
+
+{% include 'partials/letter.html' %}
+{% include 'partials/memories.html' %}
+{% include 'partials/quiz.html' %}
+
+<!-- HASIL KUIS (diisi lewat JavaScript setelah kuis dikirim) -->
+<div class="view" data-view="result" id="view-result"></div>
+
+{% include 'partials/playlist.html' %}

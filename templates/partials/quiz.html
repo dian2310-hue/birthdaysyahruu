@@ -1,0 +1,47 @@
+<!-- MENU 3: HOW MUCH DO YOU LOVE ME? -->
+<div class="view" data-view="quiz" id="view-quiz">
+  <button class="back" type="button" data-go="dashboard"><svg aria-hidden="true"><use href="#i-left"/></svg> Dashboard</button>
+  <header class="page-head">
+    <h2 class="title-serif">KUIS CINTA</h2>
+    <p class="muted">Answer honestly... adek is watching.</p>
+  </header>
+
+  <div class="quiz-done" id="quiz-done-banner" hidden>
+    Kamu sudah menyelesaikan kuis ini.
+    <button class="link-btn" type="button" id="btn-see-report">Lihat Love Report</button>
+  </div>
+
+  <form class="card quiz-card" id="quiz-form" onsubmit="return false" novalidate>
+    <div class="q-progress">
+      <span id="q-count">Question 1 of {{ quiz|length }}</span>
+      <div class="bar"><i id="q-bar"></i></div>
+    </div>
+
+    {% for q in quiz %}
+    <fieldset class="q-card" data-q="{{ q.id }}" data-type="{{ q.type }}" hidden>
+      <legend>{{ q.text }}</legend>
+      {% if q.type == 'multi' %}
+      <p class="q-hint">Bisa dipilih lebih dari satu yasayangg.</p>
+      <div class="options">
+        {% for opt in q.options %}
+        <button class="opt" type="button" role="checkbox" aria-checked="false" data-value="{{ opt }}">
+          <span class="check" aria-hidden="true"></span><span>{{ opt }}</span>
+        </button>
+        {% endfor %}
+      </div>
+      {% else %}
+      <textarea rows="6" maxlength="{{ q.max_length }}" placeholder="{{ q.placeholder }}" aria-label="{{ q.text }}"></textarea>
+      <p class="counter"><span class="cnt">0</span> / {{ q.max_length }}</p>
+      {% endif %}
+    </fieldset>
+    {% endfor %}
+
+    <div class="q-nav">
+      <button class="btn btn-ghost" type="button" id="q-back">Kembali</button>
+      <button class="btn btn-primary" type="button" id="q-next" disabled>Selanjutnya</button>
+      <button class="btn btn-primary" type="button" id="q-send" hidden disabled>Kirim jawaban saya ke Adek</button>
+    </div>
+    <p class="q-error" id="q-error" role="alert"></p>
+  </form>
+  <button class="link-btn quiz-reset" type="button" id="q-reset">Mulai ulang kuis</button>
+</div>

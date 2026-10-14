@@ -1,0 +1,13 @@
+[
+  {"id": "q1", "short": "Siapakah aku?", "text": "Siapakah aku?", "type": "multi",
+   "options": ["Sayangku", "Cintaku", "Ayipakuuu", "Pacalkuuu"]},
+  {"id": "q2", "short": "Cinta Abang ke Adek", "text": "Seberapa besar cinta Abang ke Adek?", "type": "multi",
+   "options": ["No limit", "Seluas bumi angkasa"]},
+  {"id": "q3", "short": "Yang Abang suka dari Adek", "text": "Apa yang Abang suka dari Adek?", "type": "multi",
+   "options": ["Sifat", "All"]},
+  {"id": "q4", "short": "Panggilan sayang", "text": "Apa panggilan sayang Abang ke Adek?", "type": "multi",
+   "options": ["Sayang", "BB", "Baby", "Cintaku"]},
+  {"id": "q5", "short": "Pesan untuk Adek", "type": "text",
+   "text": "Berikan pesan untuk adek supaya adek bisa jadi pacar yang jauh lebih baik lagi buat abang.",
+   "placeholder": "Tulis pesan untuk Adek di sini...", "max_length": 600}
+]

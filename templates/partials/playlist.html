@@ -1,0 +1,35 @@
+<!-- MENU 4: LAGU FAVORITE KITA -->
+<div class="view" data-view="playlist">
+  <button class="back" type="button" data-go="dashboard"><svg aria-hidden="true"><use href="#i-left"/></svg> Dashboard</button>
+  <header class="page-head">
+    <h2 class="title-serif">LAGU FAVORITE KITA</h2>
+    <p class="muted">Tiga lagu kesukaan kita berdua.</p>
+  </header>
+
+  <p class="tip">Tip: saat kamu menekan <b>Listen</b>, musik latar otomatis dijeda supaya tidak tabrakan dengan Spotify. Mau menyalakannya lagi? Tekan tombol musik di pojok kanan atas.</p>
+
+  <div class="song-list">
+    {% for s in songs %}
+    <article class="card song">
+      <img class="song-cover" src="{{ url_for('static', filename='images/photos/' ~ s.cover) }}" alt="Cover lagu {{ s.title }}" width="96" height="96" loading="lazy">
+      <div class="song-info">
+        <h3>{{ s.title }}</h3>
+        <p class="artist">{{ s.artist }}</p>
+        <p class="song-note">{{ s.note }}</p>
+      </div>
+      <div class="song-actions">
+        {% if s.embed %}
+        <button class="btn btn-primary btn-sm" type="button" data-embed-toggle data-embed="{{ s.embed }}"><svg aria-hidden="true"><use href="#i-play"/></svg><span class="lbl">Listen</span></button>
+        <a class="btn btn-ghost btn-sm" href="{{ s.spotify_url }}" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+        {% else %}
+        <button class="btn btn-soft btn-sm" type="button" data-embed-toggle data-embed=""><svg aria-hidden="true"><use href="#i-play"/></svg><span class="lbl">Listen</span></button>
+        <span class="muted small">Link Spotify belum diisi.</span>
+        {% endif %}
+      </div>
+      <div class="embed-slot" data-open="0"></div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="row"><button class="btn btn-primary" type="button" data-go="dashboard">Kembali</button></div>
+</div>

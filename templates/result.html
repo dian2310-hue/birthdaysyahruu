@@ -1,0 +1,46 @@
+{# Isi halaman hasil (disuntikkan ke #view-result oleh JavaScript). #}
+<button class="back" type="button" data-go="quiz"><svg aria-hidden="true"><use href="#i-left"/></svg> Edit answers</button>
+
+<section class="card result-card">
+  <p class="eyebrow">certified by adek</p>
+  <h2 class="title-serif">Your Love Report &#9825;</h2>
+
+  <div class="heart-meter" style="--p:0">
+    <svg class="hm-base" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
+    <svg class="hm-fill" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
+  </div>
+
+  <p class="big-percent"><span id="love-count" data-target="{{ percent }}">0</span>%</p>
+  <div class="meter-bar" aria-hidden="true"><i id="meter-bar"></i></div>
+  <p class="result-line">Result: {{ percent }}% certified sayang Adek.</p>
+  <p class="muted small">Ini hasil permainan aja sayang, bukan ukuran cinta yang sebenarnya. Cinta kita nggak bisa diukur pakai persen. Karna adek tau cinta abang keadek luarbiasa</p>
+
+  <ul class="summary">
+    {% for q in quiz if q.type == 'multi' %}
+    <li>
+      <span class="s-label">{{ q.short }}</span>
+      <span class="s-chips">{% for v in answers[q.id] %}<span class="chip">{{ v }}</span>{% endfor %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p class="closing">Terima kasih sudah menjawab dengan jujur, sayang. Selamat ulang tahun. adek sayang abang selalu.</p>
+
+  <div class="answers-full" id="answers-full" hidden>
+    {% for q in quiz %}
+    <div class="qa">
+      <p class="qa-q">{{ loop.index }}. {{ q.text }}</p>
+      <p class="qa-a">{% if answers[q.id] is string %}{{ answers[q.id] }}{% else %}{{ answers[q.id]|join(', ') }}{% endif %}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="result-actions">
+    <button class="btn btn-soft" type="button" data-result="see">See my answers</button>
+    <button class="btn btn-primary" type="button" data-result="copy">Salin my love report</button>
+    <button class="btn btn-ghost" type="button" data-result="download">Download as .txt</button>
+    <button class="btn btn-ghost" type="button" data-go="dashboard">Kembali</button>
+  </div>
+  <p class="muted small note-honest">Jawaban abang uda tersimpan di website ini. Supaya sampe sama adek, salin atau unduh laporannya lalu kirim lewat chat kita yaasayang.</p>
+  <textarea id="report-text" hidden readonly>{{ report }}</textarea>
+</section>
